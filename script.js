@@ -169,10 +169,10 @@ document.querySelectorAll('.pill').forEach(pill => {
 console.log('%c👋 Hi there! Portfolio by Likhith Nattuva', 'color: #6366f1; font-size: 16px; font-weight: bold;');
 console.log('%c📧 likhith2201@gmail.com', 'color: #a5b4fc; font-size: 13px;');
 
-// ── CONTACT FORM (Netlify Forms AJAX) ──
+// ── CONTACT FORM (Formspree AJAX) ──
 const contactForm = document.getElementById('contact-form');
-const formStatus = document.getElementById('form-status');
-const submitBtn = document.getElementById('form-submit-btn');
+const formStatus  = document.getElementById('form-status');
+const submitBtn   = document.getElementById('form-submit-btn');
 
 if (contactForm) {
   contactForm.addEventListener('submit', async (e) => {
@@ -182,11 +182,13 @@ if (contactForm) {
     formStatus.textContent = '';
     formStatus.className = 'form-status';
 
+    const data = new FormData(contactForm);
+
     try {
-      const res = await fetch('/', {
+      const res = await fetch(contactForm.action, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(new FormData(contactForm)).toString(),
+        headers: { 'Accept': 'application/json' },
+        body: data,
       });
 
       if (res.ok) {
@@ -194,10 +196,12 @@ if (contactForm) {
         formStatus.classList.add('form-status--success');
         contactForm.reset();
       } else {
-        throw new Error('Network response was not ok');
+        const json = await res.json();
+        const msg = json?.errors?.map(e => e.message).join(', ') || 'Something went wrong.';
+        throw new Error(msg);
       }
-    } catch {
-      formStatus.textContent = '✗ Something went wrong. Please email me directly.';
+    } catch (err) {
+      formStatus.textContent = `✗ ${err.message || 'Something went wrong. Please email me directly.'}`;
       formStatus.classList.add('form-status--error');
     } finally {
       submitBtn.disabled = false;
