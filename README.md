@@ -6,7 +6,7 @@
 
 > A modern, responsive personal portfolio website built with vanilla HTML, CSS, and JavaScript. Showcasing projects, skills, and experience in Software Engineering, Data Engineering, and Cloud/ML.
 
-🌐 **Live Site:** [likhithnattuva.netlify.app](https://likhithnattuva.netlify.app) &nbsp;|&nbsp; 📧 [likhith2201@gmail.com](mailto:likhith2201@gmail.com) &nbsp;|&nbsp; 💼 [LinkedIn](https://www.linkedin.com/in/likhith-nattuva-4a15b620a/) &nbsp;|&nbsp; 🐙 [GitHub](https://github.com/LIkhithn22)
+🌐 **Live Site:** [likhithnattuva.vercel.app](https://likhithnattuva.vercel.app) &nbsp;|&nbsp; 📧 [likhith2201@gmail.com](mailto:likhith2201@gmail.com) &nbsp;|&nbsp; 💼 [LinkedIn](https://www.linkedin.com/in/likhith-nattuva-4a15b620a/) &nbsp;|&nbsp; 🐙 [GitHub](https://github.com/LIkhithn22)
 
 ---
 
