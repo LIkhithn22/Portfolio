@@ -124,7 +124,7 @@ const statsObserver = new IntersectionObserver((entries) => {
     if (entry.isIntersecting) {
       animateCounter(document.getElementById('stat-projects'), 6, '+');
       animateCounter(document.getElementById('stat-skills'), 15, '+');
-      animateCounter(document.getElementById('stat-gpa'), 3.87);
+      animateCounter(document.getElementById('stat-gpa'), 3.9);
       statsObserver.disconnect();
     }
   });
@@ -168,3 +168,40 @@ document.querySelectorAll('.pill').forEach(pill => {
 
 console.log('%c👋 Hi there! Portfolio by Likhith Nattuva', 'color: #6366f1; font-size: 16px; font-weight: bold;');
 console.log('%c📧 likhith2201@gmail.com', 'color: #a5b4fc; font-size: 13px;');
+
+// ── CONTACT FORM (Netlify Forms AJAX) ──
+const contactForm = document.getElementById('contact-form');
+const formStatus = document.getElementById('form-status');
+const submitBtn = document.getElementById('form-submit-btn');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    formStatus.textContent = '';
+    formStatus.className = 'form-status';
+
+    try {
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(contactForm)).toString(),
+      });
+
+      if (res.ok) {
+        formStatus.textContent = '✓ Message sent! I\'ll get back to you soon.';
+        formStatus.classList.add('form-status--success');
+        contactForm.reset();
+      } else {
+        throw new Error('Network response was not ok');
+      }
+    } catch {
+      formStatus.textContent = '✗ Something went wrong. Please email me directly.';
+      formStatus.classList.add('form-status--error');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message';
+    }
+  });
+}

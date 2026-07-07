@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Page Not Found | Likhith Nattuva</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg-900: #060914;
+      --text-100: #f0f4ff;
+      --text-300: #a8b8d8;
+      --text-500: #5d7399;
+      --accent-primary: #6366f1;
+      --accent-secondary: #8b5cf6;
+      --accent-pink: #ec4899;
+      --grad-hero: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background-color: var(--bg-900);
+      color: var(--text-100);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      overflow: hidden;
+    }
+    .bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.18;
+    }
+    .orb-1 {
+      width: 500px; height: 500px;
+      background: var(--accent-primary);
+      top: -15%; left: -10%;
+      animation: drift 8s ease-in-out infinite alternate;
+    }
+    .orb-2 {
+      width: 400px; height: 400px;
+      background: var(--accent-secondary);
+      bottom: -10%; right: -5%;
+      animation: drift 10s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes drift {
+      from { transform: translate(0, 0); }
+      to   { transform: translate(30px, 20px); }
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      max-width: 520px;
+    }
+    .code {
+      font-family: 'Fira Code', monospace;
+      font-size: clamp(5rem, 18vw, 9rem);
+      font-weight: 800;
+      line-height: 1;
+      background: var(--grad-hero);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1.25rem;
+    }
+    h1 {
+      font-size: clamp(1.3rem, 4vw, 1.75rem);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    p {
+      font-size: 1rem;
+      color: var(--text-300);
+      line-height: 1.7;
+      margin-bottom: 2.25rem;
+    }
+    .btn-primary {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(99,102,241,0.35);
+    }
+    .btn-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(99,102,241,0.45);
+    }
+    .nav-logo {
+      position: fixed;
+      top: 1.5rem;
+      left: 2rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-100);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .dot { color: var(--accent-primary); }
+  </style>
+</head>
+<body>
+  <div class="bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+  <a href="/" class="nav-logo">LN<span class="dot">.</span></a>
+  <div class="content">
+    <div class="code">404</div>
+    <h1>Page Not Found</h1>
+    <p>Looks like this page got lost in the data pipeline. Let's get you back to solid ground.</p>
+    <a href="/" class="btn-primary">Back to Portfolio</a>
+  </div>
+</body>
+</html>
